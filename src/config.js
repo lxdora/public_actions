@@ -1,4 +1,5 @@
-const [cookie, user, pass, to, uid] = process.argv.slice(2);
+const [cookie, user, pass, to, uid, push_plus_token] = process.argv.slice(2);
+
 
 const headers = {
   'content-type': 'application/json; charset=utf-8',
@@ -12,4 +13,4 @@ const headers = {
   cookie
 };
 
-module.exports = { headers, user, pass, to, uid };
+module.exports = { headers, user, pass, to, uid, push_plus_token };

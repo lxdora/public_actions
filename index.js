@@ -3,6 +3,7 @@ const draw = require('./src/draw');
 const dipLucky = require('./src/dipLucky');
 const sendMail = require('./src/sendMail');
 const getPoint = require('./src/getPoint');
+const wxPush = require('./src/wxPush')
 
 const { autoGame } = require('./src/game/autoGame');
 
@@ -53,21 +54,21 @@ const { autoGame } = require('./src/game/autoGame');
   console.log(dip_res);
 
   try {
-    const html = `
-      <h1 style="text-align: center">自动签到通知</h1>
-      <p style="text-indent: 2em">沾喜气结果：${dip_res}</p>
-      <p style="text-indent: 2em">当前矿石：${now_score}</p>
-      <p style="text-indent: 2em">较昨日增长：${now_score - yesterday_score}</p>
-      <p style="text-indent: 2em">签到结果：${sign_res}</p>
-      <p style="text-indent: 2em">抽奖结果：${draw_res}</p>
-      <p style="text-indent: 2em">游戏结果：${game_res}</p><br/>
+    const data = `
+      沾喜气结果：${dip_res} \n
+      当前矿石：${now_score} \n
+      较昨日增长：${now_score - yesterday_score} \n
+      签到结果：${sign_res} \n
+      抽奖结果：${draw_res} \n
+      游戏结果：${game_res}
     `;
+    await wxPush(data);
+    console.log('微信推送成功');
+    // console.log(html);
 
-    console.log(html);
+    // await sendMail({ from: '掘金', subject: '定时任务', html });
 
-    await sendMail({ from: '掘金', subject: '定时任务', html });
-
-    console.log('邮件发送成功！');
+    // console.log('邮件发送成功！');
   } catch (error) {
     console.error(error);
   }
