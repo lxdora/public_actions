@@ -4,6 +4,7 @@ const dipLucky = require('./src/dipLucky');
 const sendMail = require('./src/sendMail');
 const getPoint = require('./src/getPoint');
 const wxPush = require('./src/wxPush')
+const activity = require('./src/activity')
 
 const { autoGame } = require('./src/game/autoGame');
 
@@ -53,6 +54,13 @@ const { autoGame } = require('./src/game/autoGame');
 
   console.log(dip_res);
 
+  try{
+    activity_res = await activity();
+    console.log('评论成功');
+  }catch(error){
+    activity_res = '评论失败'
+  }
+
   try {
     const data = `
       沾喜气结果：${dip_res} \n
@@ -60,7 +68,8 @@ const { autoGame } = require('./src/game/autoGame');
       较昨日增长：${now_score - yesterday_score} \n
       签到结果：${sign_res} \n
       抽奖结果：${draw_res} \n
-      游戏结果：${game_res}
+      游戏结果：${game_res} \n
+      评论结果：${activity_res}
     `;
     await wxPush(data);
     console.log('微信推送成功');
