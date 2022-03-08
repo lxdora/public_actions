@@ -3,8 +3,6 @@
  const fetch = require('node-fetch');
  const { headers } = require('./config');
  
- activity()
-
  async function activity() {
    //获取沸点
    const feidians = await fetch('https://api.juejin.cn/recommend_api/v1/short_msg/recommend', {
