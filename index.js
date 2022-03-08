@@ -56,10 +56,11 @@ const { autoGame } = require('./src/game/autoGame');
 
   try{
     activity_res = await activity();
-    console.log('评论成功');
   }catch(error){
     activity_res = '评论失败'
   }
+
+  console.log(activity_res);
 
   try {
     const data = `

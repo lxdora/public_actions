@@ -32,5 +32,5 @@
   return '发送评论成功';
  }
  
-//  module.exports = sign_in;
+ module.exports = activity;
  
