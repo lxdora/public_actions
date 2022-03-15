@@ -5,6 +5,7 @@ const sendMail = require('./src/sendMail');
 const getPoint = require('./src/getPoint');
 const wxPush = require('./src/wxPush')
 const activity = require('./src/activity')
+const collectionBug  = require('./src/collectionBug')
 
 const { autoGame } = require('./src/game/autoGame');
 
@@ -62,6 +63,12 @@ const { autoGame } = require('./src/game/autoGame');
 
   console.log(activity_res);
 
+  try{
+    collection_bug_res = await collectionBug()
+  }catch(error){
+    collection_bug_res = '收集bug失败'
+  }
+
   try {
     const data = `
       沾喜气结果：${dip_res} \n
@@ -70,7 +77,8 @@ const { autoGame } = require('./src/game/autoGame');
       签到结果：${sign_res} \n
       抽奖结果：${draw_res} \n
       游戏结果：${game_res} \n
-      评论结果：${activity_res}
+      评论结果：${activity_res} \n
+      收集bug结果：${collection_bug_res}
     `;
     await wxPush(data);
     console.log('微信推送成功');
