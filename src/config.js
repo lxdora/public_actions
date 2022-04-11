@@ -1,4 +1,4 @@
-const [cookie, user, pass, to, uid, push_plus_token] = process.argv.slice(2);
+const [cookie, user, pass, to, uid, push_plus_token, ding_token, ding_sign] = process.argv.slice(2);
 
 
 const headers = {
@@ -13,4 +13,4 @@ const headers = {
   cookie
 };
 
-module.exports = { headers, user, pass, to, uid, push_plus_token };
+module.exports = { headers, user, pass, to, uid, push_plus_token, ding_token, ding_sign };

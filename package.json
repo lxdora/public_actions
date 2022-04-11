@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hccluck/public_actions#readme",
   "dependencies": {
+    "ding-bot-sdk": "^1.2.1",
     "got": "^11.8.2",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.7",

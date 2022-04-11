@@ -6,6 +6,7 @@ const getPoint = require('./src/getPoint');
 const wxPush = require('./src/wxPush')
 const activity = require('./src/activity')
 const collectionBug  = require('./src/collectionBug')
+const dingPush = require('./src/dingTalk')
 
 const { autoGame } = require('./src/game/autoGame');
 
@@ -68,26 +69,32 @@ const { autoGame } = require('./src/game/autoGame');
   }catch(error){
     collection_bug_res = '收集bug失败'
   }
-
+  //微信推送
+  const data = `
+    沾喜气结果：${dip_res} \n
+    当前矿石：${now_score} \n
+    较昨日增长：${now_score - yesterday_score} \n
+    签到结果：${sign_res} \n
+    抽奖结果：${draw_res} \n
+    游戏结果：${game_res} \n
+    评论结果：${activity_res} \n
+    收集bug结果：${collection_bug_res}
+  `;
   try {
-    const data = `
-      沾喜气结果：${dip_res} \n
-      当前矿石：${now_score} \n
-      较昨日增长：${now_score - yesterday_score} \n
-      签到结果：${sign_res} \n
-      抽奖结果：${draw_res} \n
-      游戏结果：${game_res} \n
-      评论结果：${activity_res} \n
-      收集bug结果：${collection_bug_res}
-    `;
+    //pushplus推送
     await wxPush(data);
     console.log('微信推送成功');
-    // console.log(html);
-
-    // await sendMail({ from: '掘金', subject: '定时任务', html });
-
-    // console.log('邮件发送成功！');
   } catch (error) {
     console.error(error);
   }
+
+  //钉钉机器人推送
+  try{
+     //钉钉推送
+     await dingPush(data)
+     console.log('钉钉推送成功')
+  }catch(err){
+    console.log(err);
+  }
+
 })();

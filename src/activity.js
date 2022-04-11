@@ -27,7 +27,7 @@
        item_id: chooseFeiDian.msg_id,
        item_type: 4})
    })
-  return '发送评论成功';
+  return poem.content;
  }
  
  module.exports = activity;
