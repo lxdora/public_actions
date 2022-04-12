@@ -35,4 +35,6 @@ jobs:
           TO: ${{ secrets.TO }}
           UID: ${{ secrets.UID }}
           PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
-        run: npm ci && node index.js "${COOKIE}" "${USER}" "${PASS}" "${TO}" "${UID}" "${PUSH_PLUS_TOKEN}"
+          DING_TOKEN: ${{ secrets.DING_TOKEN }}
+          DING_TOKEN: ${{ secrets.DING_SIGN }}
+        run: npm ci && node index.js "${COOKIE}" "${USER}" "${PASS}" "${TO}" "${UID}" "${PUSH_PLUS_TOKEN}" "${DING_TOKEN}" "${DING_SIGN}"
