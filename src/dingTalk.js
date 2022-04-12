@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const { ding_token, ding_sign} = require('./config');
 
 const Bot = require('ding-bot-sdk')
