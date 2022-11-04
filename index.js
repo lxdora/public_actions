@@ -56,11 +56,11 @@ const { autoGame } = require('./src/game/autoGame');
 
   console.log(dip_res);
 
-  try{
-    activity_res = await activity();
-  }catch(error){
-    activity_res = '评论失败'
-  }
+//   try{
+//     activity_res = await activity();
+//   }catch(error){
+//     activity_res = '评论失败'
+//   }
 
   console.log(activity_res);
 
