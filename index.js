@@ -4,7 +4,7 @@ const dipLucky = require('./src/dipLucky');
 const sendMail = require('./src/sendMail');
 const getPoint = require('./src/getPoint');
 const wxPush = require('./src/wxPush')
-const activity = require('./src/activity')
+// const activity = require('./src/activity')
 const collectionBug  = require('./src/collectionBug')
 const dingPush = require('./src/dingTalk')
 
@@ -77,7 +77,6 @@ const { autoGame } = require('./src/game/autoGame');
     签到结果：${sign_res} \n
     抽奖结果：${draw_res} \n
     游戏结果：${game_res} \n
-    评论结果：${activity_res} \n
     收集bug结果：${collection_bug_res}
   `;
   try {
