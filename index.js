@@ -62,7 +62,7 @@ const { autoGame } = require('./src/game/autoGame');
 //     activity_res = '评论失败'
 //   }
 
-  console.log(activity_res);
+//   console.log(activity_res);
 
   try{
     collection_bug_res = await collectionBug()
