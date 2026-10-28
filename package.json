@@ -1,0 +1,26 @@
+{
+  "name": "public_actions",
+  "version": "2.0.0",
+  "description": "掘金定时签到：自动签到、自动免费抽奖，支持邮件 / pushplus / 钉钉通知",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hccluck/public_actions.git"
+  },
+  "keywords": [],
+  "author": "hccluck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hccluck/public_actions/issues"
+  },
+  "homepage": "https://github.com/hccluck/public_actions#readme",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}
