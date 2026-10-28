@@ -1,0 +1,41 @@
+name: JueJin_Helper
+
+on:
+  schedule:
+    # cron 使用 UTC 时间。23:37 UTC = 北京时间次日 07:37
+    # 刻意避开整点/半点：GitHub 在整点会积压大量定时任务，排队延迟可达数十分钟
+    - cron: "37 23 * * *"
+
+  # 支持在 Actions 页面手动触发，用于验证 Secret 是否配置正确
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daily check-in
+        env:
+          COOKIE: ${{ secrets.COOKIE }}
+          USER: ${{ secrets.USER }}
+          PASS: ${{ secrets.PASS }}
+          TO: ${{ secrets.TO }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+          DING_TOKEN: ${{ secrets.DING_TOKEN }}
+          DING_SIGN: ${{ secrets.DING_SIGN }}
+        run: node index.js
